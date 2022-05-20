@@ -13,7 +13,7 @@ To setup the workflows on GitHub:
 2. Add the .m files to your repository.
 3. Add the .yml files to the .github/workflows folder in your repository.
 
-To see the setup and the workflow in action, watch https:/... <- To add when YouTube link is provided.
+To see the setup and the workflow in action, watch https://www.youtube.com/watch?v=PNX7f0kPSYg.
 
 ## Details
 This repository provides two .yml files and two .m files.
