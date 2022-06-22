@@ -8,7 +8,7 @@ Automate the generation of Simulink model diffs for GitHub® pull requests and p
 2. Ensure that you have MATLAB and Simulink installed on the self-hosted runner you are using. See http://www.mathworks.com.
 
 ## Setup 
-To setup the workflows on GitHub:
+To set up the workflows on GitHub:
 1. Download the .m files and .yml files.
 2. Add the .m files to your repository.
 3. Add the .yml files to the .github/workflows folder in your repository.
@@ -17,7 +17,7 @@ To see the setup and the workflow in action, watch https://www.youtube.com/watch
 
 ## Details
 This repository provides two .yml files and two .m files.
-The .yml files setup workflows to be triggered on push and pull request on GitHub. 
+The .yml files set up workflows to be triggered on push and pull request on GitHub. 
 The workflows use the .m files to:
 1) Get the list of modified model files and their ancestors using Git™ commands.
 3) Compare every modified model to its ancestor and publish the comparison report.
