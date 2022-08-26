@@ -24,6 +24,14 @@ The workflows use the .m files to:
 2) Upload all model comparison reports to the job when it is complete.
 3) Run all project tests.
 
+## Notes
+1) Taking screenshots to include in the comparison report requires your runner to have a display.  
+On Linux, you can use xvfb-run to run commands on a display server implementing the X11 display server protocol.  
+For example, in your .yml file, use:   
+*        - name: Compare Models to Ancestors  
+*                run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
+2) Starting R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when running jobs on a non-display machine.
+
 ## License
 The license is available in the License file within this repository.
 
