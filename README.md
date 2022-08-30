@@ -30,7 +30,7 @@ On Linux, you can use xvfb-run to run commands on a display server implementing 
 For example, in your .yml file, use:   
 *        - name: Compare Models to Ancestors  
 *                run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
-2) Starting R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when running jobs on a non-display machine.
+2) Starting in R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when running jobs on a non-display machine.
 
 ## License
 The license is available in the License file within this repository.
