@@ -14,6 +14,7 @@ To set up the workflows on GitHub:
 3. Add the .yml files to the .github/workflows folder in your repository.
 
 To see the setup and the workflow in action, watch https://www.youtube.com/watch?v=PNX7f0kPSYg.
+
 Visit https://www.mathworks.com/help/simulink/ug/model-diff-pull-requests.html.
 
 ## Details
