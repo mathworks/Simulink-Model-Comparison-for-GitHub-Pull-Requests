@@ -14,6 +14,7 @@ To set up the workflows on GitHub:
 3. Add the .yml files to the .github/workflows folder in your repository.
 
 To see the setup and the workflow in action, watch https://www.youtube.com/watch?v=PNX7f0kPSYg.
+Visit https://www.mathworks.com/help/simulink/ug/model-diff-pull-requests.html.
 
 ## Details
 This repository provides two .yml files and two .m files.
@@ -30,7 +31,7 @@ On Linux, you can use xvfb-run to run commands on a display server implementing 
 For example, in your .yml file, use:   
 *        - name: Compare Models to Ancestors  
 *                run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
-<!--  2) Starting in R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when running jobs on a no-display machine.-->
+2) Starting in R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when you run jobs on a no-display machine.
 
 ## License
 The license is available in the License file within this repository.
