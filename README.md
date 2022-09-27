@@ -5,7 +5,7 @@ Automate the generation of Simulink model diffs for GitHub® pull requests and p
 
 ## Prerequisites 
 1. The GitHub actions, defined in the .yml files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
-2. Ensure that you have MATLAB and Simulink installed on the self-hosted runner you are using. See http://www.mathworks.com.
+2. Ensure that you have MATLAB and Simulink installed on the self-hosted runner you are using. See https://www.mathworks.com.
 
 ## Setup 
 To set up the workflows on GitHub:
