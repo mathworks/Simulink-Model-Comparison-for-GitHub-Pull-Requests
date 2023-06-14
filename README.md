@@ -4,8 +4,11 @@
 Automate the generation of Simulink model diffs for GitHub® pull requests and push events using GitHub actions. Automatically attach the comparison reports to the pull request or push event for easy viewing outside of MATLAB® and Simulink®. 
 
 ## Prerequisites 
-1. The GitHub actions, defined in the .yml files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
+1. The GitHub actions, defined in the Diff_runTests_push.yml and Diff_runTests_pullrequest.yml files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
+Using a self-hosted runner enables you to keep your repository private.
 2. Ensure that you have MATLAB and Simulink installed on the self-hosted runner you are using. See https://www.mathworks.com.
+
+Alternatively, if you prefer to use a GitHub-hosted runner, use the actions defined in the githubrunner_push.yml and githubrunner_pullrequest.yml files instead.
 
 ## Setup 
 To set up the workflows on GitHub:
@@ -28,13 +31,15 @@ The workflows use the .m files to:
 
 ## Notes
 1) Taking screenshots to include in the comparison report requires your runner to have a display.  
-On Linux, you can use xvfb-run to run commands on a display server implementing the X11 display server protocol.  
+On Linux, if your runner does not have a display, you can use one of the following workaround in your YML files.
+- Use xvfb-run to run commands on a display server implementing the X11 display server protocol.  
 For example, in your .yml file, use:   
 *        - name: Compare Models to Ancestors  
 *                run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
+- Start a display server before the "Compare Models to Ancestors" step. For an example, see the "Start Display Server" step in the githubrunner_pullrequest.yml file.
 2) Starting in R2022b, the Comparison Tool allows you to generate comparison reports with no screenshots when you run jobs on a no-display machine.
 
 ## License
 The license is available in the License file within this repository.
 
-Copyright (c) 2022, The MathWorks, Inc.
+Copyright (c) 2022-2023, The MathWorks, Inc.
