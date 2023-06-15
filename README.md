@@ -31,7 +31,7 @@ The workflows use the .m files to:
 
 ## Notes
 1) Taking screenshots to include in the comparison report requires your runner to have a display.  
-On Linux, if your runner does not have a display, you can use one of the following workarounds in your YML files:
+On Linux, if your runner does not have a display, you can use one of the following workarounds in your YAML files:
 - Start a display server before the "Compare Models to Ancestors" step. For an example, see the "Start Display Server" step in the githubrunner_pullrequest.yml file.
 - Use xvfb-run to run commands on a display server implementing the X11 display server protocol.  
 For example, in your .yml file, use:   
