@@ -1,0 +1,6 @@
+[submodule "Test_CI_Mathworks"]
+	path = Test_CI_Mathworks
+	url = https://github.com/NTmuir/Test_CI_Mathworks.git
+[submodule "Parent_Folder/Test_CI_Mathworks"]
+	path = Parent_Folder/Test_CI_Mathworks
+	url = https://github.com/NTmuir/Test_CI_Mathworks.git

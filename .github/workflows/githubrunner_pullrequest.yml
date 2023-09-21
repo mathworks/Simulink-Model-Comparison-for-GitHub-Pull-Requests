@@ -1,0 +1,48 @@
+
+name: PullRequest GitHub Runner - Diff to Ancestor, Publish and attach Report, and Run Project Tests
+
+# Controls when the workflow will run
+on: 
+  pull_request:
+
+  workflow_dispatch:  
+
+
+jobs:
+  my-job:
+    name: Diff to Ancestor, Publish and attach Report, and Run Project Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: |
+            ${{secrets.GHA_PRIVATE_TEST_CI_MATHWORKS}}
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Start display server
+        run: |
+         sudo apt-get install -y xvfb
+         Xvfb :99 &
+         export DISPLAY=:99
+         echo "DISPLAY=:99" >> $GITHUB_ENV
+      - name: Compare Models to Ancestors
+        uses: matlab-actions/run-command@v1
+        with:
+          command: addpath(genpath(pwd)); comparisons.ExternalSCMLink.setupGitConfig() ;branch ="${{ github.head_ref }}", diffGitHub_pullrequest(branch)
+      - name: Upload Comparison Reports
+        uses: actions/upload-artifact@v3
+        with:
+           name: diffreports
+           path: ${{ github.workspace }}/*.html
+      - name: Run All Project Tests
+        uses: matlab-actions/run-command@v1
+        with:
+          command: runtests
+
+#   Copyright 2022-2023 The MathWorks, Inc.
