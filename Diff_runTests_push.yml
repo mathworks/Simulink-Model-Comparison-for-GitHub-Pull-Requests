@@ -14,21 +14,21 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
          fetch-depth: 0
       - name: Compare Models to Ancestors
-        uses: matlab-actions/run-command@v1
+        uses: matlab-actions/run-command@v2
         with:
           command: lastpush="${{ github.event.before }}", diffGitHub_push(lastpush)
       - name: Upload Comparison Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
            name: diffreports
            path: ${{ github.workspace }}\*.html
       - name: Run All Project Tests
-        uses: matlab-actions/run-command@v1
+        uses: matlab-actions/run-command@v2
         with:
           command: runtests
 
-#   Copyright 2022 The MathWorks, Inc.
+#   Copyright 2022-2024 The MathWorks, Inc.
