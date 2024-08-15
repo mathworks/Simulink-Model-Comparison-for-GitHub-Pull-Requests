@@ -8,7 +8,7 @@ function diffGitHub_pullrequest(branchname)
     gitCommand = sprintf('git --no-pager diff --name-only refs/remotes/origin/main..refs/remotes/origin/%s ***.slx', branchname);
     [status,modifiedFiles] = system(gitCommand);
     assert(status==0, modifiedFiles);
-    modifiedFiles = split(modifiedFiles);
+    modifiedFiles = splitlines(modifiedFiles);
     modifiedFiles(end) = []; % Removing last element because it is empty
     
     if isempty(modifiedFiles)
@@ -57,7 +57,7 @@ function ancestor = getAncestor(tempdir,fileName)
     ancestor = strrep(sprintf('%s%s%s',ancestor, "_ancestor", ext), '\', '/');
     % Build git command to get ancestor from main
     % git show refs/remotes/origin/main:models/modelname.slx > modelscopy/modelname_ancestor.slx
-    gitCommand = sprintf('git --no-pager show refs/remotes/origin/main:%s > %s', fileName, ancestor);
+    gitCommand = sprintf('git --no-pager show refs/remotes/origin/main:\"%s\" > \"%s\"', fileName, ancestor);
     
     [status, result] = system(gitCommand);
     assert(status==0, result);
