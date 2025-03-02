@@ -4,8 +4,8 @@ function diffGitHub_pullrequest(branchname)
 
     % List modified models since branch diverged from main
     % Use *** to search recursively for modified SLX files starting in the current folder
-    % git diff --name-only refs/remotes/origin/main..refs/remotes/origin/branchtomerge
-    gitCommand = sprintf('git --no-pager diff --name-only refs/remotes/origin/main..refs/remotes/origin/%s ***.slx', branchname);
+    % git diff --name-only main..branchtomerge
+    gitCommand = sprintf('git --no-pager diff --name-only origin/main..origin/%s ***.slx', branchname);
     [status,modifiedFiles] = system(gitCommand);
     assert(status==0, modifiedFiles);
     modifiedFiles = splitlines(modifiedFiles);
@@ -56,12 +56,12 @@ function ancestor = getAncestor(tempdir,fileName)
     fileName = strrep(fileName, '\', '/');
     ancestor = strrep(sprintf('%s%s%s',ancestor, "_ancestor", ext), '\', '/');
     % Build git command to get ancestor from main
-    % git show refs/remotes/origin/main:models/modelname.slx > modelscopy/modelname_ancestor.slx
-    gitCommand = sprintf('git --no-pager show refs/remotes/origin/main:\"%s\" > \"%s\"', fileName, ancestor);
+    % git show origin/main:models/modelname.slx > modelscopy/modelname_ancestor.slx
+    gitCommand = sprintf('git --no-pager show origin/main:\"%s\" > \"%s\"', fileName, ancestor);
     
     [status, result] = system(gitCommand);
     assert(status==0, result);
 
 end
 
-%   Copyright 2022 The MathWorks, Inc.
+%   Copyright 2024 The MathWorks, Inc.
