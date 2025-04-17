@@ -24,19 +24,22 @@ function diffGitHub_pullrequest(branchname)
     
     % Generate a comparison report for every modified model file
     for i = 1:numel(modifiedFiles)
-        report = diffToAncestor(tempdir,string(modifiedFiles(i)));
+        diffToAncestor(tempdir,string(modifiedFiles(i)));
     end
     
     % Delete the temporary folder
     rmdir modelscopy s
 end
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function report = diffToAncestor(tempdir,fileName)
-    
-    ancestor = getAncestor(tempdir,fileName);
+    ancestor = getAncestor(tempdir,fileName,lastpush);
+    if isempty(ancestor)
+        % new model - skip diff report
+        report = [];
+        return
+    end
 
     % Compare models and publish results in a printable report
     % Specify the format using 'pdf', 'html', or 'docx'
@@ -49,7 +52,7 @@ end
 
 function ancestor = getAncestor(tempdir,fileName)
     
-    [relpath, name, ext] = fileparts(fileName);
+    [~, name, ext] = fileparts(fileName);
     ancestor = fullfile(tempdir, name);
     
     % Replace seperators to work with Git and create ancestor file name
@@ -59,9 +62,11 @@ function ancestor = getAncestor(tempdir,fileName)
     % git show origin/main:models/modelname.slx > modelscopy/modelname_ancestor.slx
     gitCommand = sprintf('git --no-pager show origin/main:%s > %s', fileName, ancestor);
     
-    [status, result] = system(gitCommand);
-    assert(status==0, result);
-
+    [status, ~] = system(gitCommand);
+    if status ~= 0
+        % new model
+        ancestor = [];
+    end
 end
 
-%   Copyright 2024 The MathWorks, Inc.
+%   Copyright 2024-2025 The MathWorks, Inc.
