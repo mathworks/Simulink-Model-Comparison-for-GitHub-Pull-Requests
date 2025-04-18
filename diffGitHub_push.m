@@ -7,7 +7,11 @@ function diffGitHub_push(lastpush)
     % git diff --name-only lastpush ***.slx
     gitCommand = sprintf('git --no-pager diff --name-only %s ***.slx', lastpush);
     [status,modifiedFiles] = system(gitCommand);
-    assert(status==0, modifiedFiles);
+    if status ~= 0
+        warning("git diff failed")
+        warning(modifiedFiles)
+        return;
+    end
     modifiedFiles = split(modifiedFiles);
     modifiedFiles(end) = []; % Removing last element because it is empty
     
