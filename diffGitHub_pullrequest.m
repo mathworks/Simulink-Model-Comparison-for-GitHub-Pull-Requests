@@ -38,7 +38,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function report = diffToAncestor(tempdir,fileName)
-    ancestor = getAncestor(tempdir,fileName,lastpush);
+    ancestor = getAncestor(tempdir,fileName);
     if isempty(ancestor)
         % new model - skip diff report
         report = [];
