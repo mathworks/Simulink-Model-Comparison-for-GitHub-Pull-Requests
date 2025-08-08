@@ -3,7 +3,7 @@
 
 Automate the generation of Simulink model diffs for GitHub® pull requests and push events using GitHub actions. Automatically attach the comparison reports to the pull request or push event for easy viewing outside of MATLAB® and Simulink®.
 
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/Simulink-Model-Comparison-for-GitHub-Pull-Requests)
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/Simulink-Model-Comparison-for-GitHub-Pull-Requests).
 
 ## Prerequisites 
 1. The GitHub actions, defined in the `Diff_runTests_push.yml` and `Diff_runTests_pullrequest.yml` files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
