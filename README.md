@@ -6,11 +6,11 @@ Automate the generation of Simulink model diffs for GitHub® pull requests and p
 [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/Simulink-Model-Comparison-for-GitHub-Pull-Requests)
 
 ## Prerequisites 
-1. The GitHub actions, defined in the Diff_runTests_push.yml and Diff_runTests_pullrequest.yml files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
+1. The GitHub actions, defined in the `Diff_runTests_push.yml` and `Diff_runTests_pullrequest.yml` files, use a self-hosted runner. To add a self-hosted runner to your repository, see https://docs.github.com/en/actions/hosting-your-own-runners.
 Using a self-hosted runner enables you to keep your repository private.
 2. Ensure that you have MATLAB and Simulink installed on the self-hosted runner you are using. See https://www.mathworks.com.
 
-Alternatively, if you prefer to use a GitHub-hosted runner, use the actions defined in the githubrunner_push.yml and githubrunner_pullrequest.yml files instead.
+Alternatively, if you prefer to use a GitHub-hosted runner, use the actions defined in the `githubrunner_push.yml` and `githubrunner_pullrequest.yml` files instead. To use MATLAB and Simulink on GitHub-hosted runners, you must also set up licensing. For more information, see https://github.com/matlab-actions/.github?tab=readme-ov-file#use-matlab-batch-licensing-token
 
 ## Setup 
 To set up the workflows on GitHub:
